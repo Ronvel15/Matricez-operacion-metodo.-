@@ -6,7 +6,7 @@
 
 static float sistema[3][4];
 static int sucecion[] = {1, 2, 2, 0, 0, 1}, *dimr = sucecion;
-static void div_x_inver(int colum), print();
+static void div_x_inver(), print();
 static int i = 0, j = 0;
 void gauss_jordan(){
     static char *incognitas[] = {"x","y","z", "Libre"};
@@ -21,12 +21,12 @@ void gauss_jordan(){
     system("cls");
     puts("Matriz dada:");
     print();
-    div_x_inver(i);/**Creé una sola función para acelerar la velocidad de ejecución*/
+    div_x_inver();/**Creé una sola función para acelerar la velocidad de ejecución*/
     puts("Matriz resultante:");
     (sistema[0][0] == 1 && sistema[1][1] == 1 && sistema[2][2] == 1)?  print(): puts("El sistema no tiene solucion");
 }
 
-static void div_x_inver(int colum){
+static void div_x_inver(){
     float inval, divisor;
     int k;
     for(i = 0; i < 3; i++){
@@ -35,9 +35,9 @@ static void div_x_inver(int colum){
             sistema[i][j] /= divisor;
         }
         for (k = 0; k < 2; k++, dimr++){
-            inval = -sistema[dimr[0]][colum]; /**Creo el valor inverso, utilizo el puntero dimr y avanzo con su indice*/
+            inval = -sistema[dimr[0]][i]; /**Creo el valor inverso, utilizo el puntero dimr y avanzo con su indice*/
             for (j = 0; j < 4; j++){
-                sistema[dimr[0]][j] += (inval * sistema[colum][j]);
+                sistema[dimr[0]][j] += (inval * sistema[i][j]);
             }
         }
     }

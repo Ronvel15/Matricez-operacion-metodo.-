@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Metodos/gauss_jordan.h"
 #include "Metodos/m_inversa.h"
+#include "Metodos/gauss.h"
 #include "Operaciones/mat_op.h"
 #include "Operaciones/suma_m.h"
 #include "Operaciones/resta_m.h"
